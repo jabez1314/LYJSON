@@ -1,12 +1,12 @@
 //
-//  LYJSONError.m
-//  JSON
+//  LYJSONType.m
+//  LYJSON
 //
-//  Created by Jabez on 2018/9/27.
-//  Copyright © 2018 ly. All rights reserved.
+//  Created by john on 2019/5/26.
+//  Copyright © 2019 jabez. All rights reserved.
 //
 
-#import "LYJSONError.h"
+#import "LYJSONType.h"
 
 @implementation LYJSONError
 

@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		526C2F992299949C003BD83C /* LYStaticJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 526C2F972299949C003BD83C /* LYStaticJSON.h */; };
+		526C2F9A2299949C003BD83C /* LYStaticJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C2F982299949C003BD83C /* LYStaticJSON.m */; };
+		526C2F9B2299949C003BD83C /* LYStaticJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C2F982299949C003BD83C /* LYStaticJSON.m */; };
+		526C2F9E2299A7DE003BD83C /* LYJSONType.h in Headers */ = {isa = PBXBuildFile; fileRef = 526C2F9C2299A7DE003BD83C /* LYJSONType.h */; };
+		526C2F9F2299A7DE003BD83C /* LYJSONType.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C2F9D2299A7DE003BD83C /* LYJSONType.m */; };
+		526C2FA02299A7E4003BD83C /* LYJSONType.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C2F9D2299A7DE003BD83C /* LYJSONType.m */; };
 		9E82D0D4215CDD1300D7BECD /* LYJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E82D0CA215CDD1300D7BECD /* LYJSON.framework */; };
 		9E82D0D9215CDD1300D7BECD /* LYJSONTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E82D0D8215CDD1300D7BECD /* LYJSONTests.m */; };
-		9E82D0FC215CDF2500D7BECD /* LYJSONError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E82D0F8215CDF2400D7BECD /* LYJSONError.m */; };
-		9E82D0FD215CDF2500D7BECD /* LYJSONError.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E82D0F9215CDF2400D7BECD /* LYJSONError.h */; };
 		9E82D0FE215CDF2500D7BECD /* LYJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E82D0FA215CDF2500D7BECD /* LYJSON.m */; };
 		9E82D0FF215CDF2500D7BECD /* LYJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E82D0FB215CDF2500D7BECD /* LYJSON.h */; };
 		9E82D100215CDF7400D7BECD /* LYJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E82D0FA215CDF2500D7BECD /* LYJSON.m */; };
@@ -27,13 +31,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		526C2F972299949C003BD83C /* LYStaticJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYStaticJSON.h; sourceTree = "<group>"; };
+		526C2F982299949C003BD83C /* LYStaticJSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYStaticJSON.m; sourceTree = "<group>"; };
+		526C2F9C2299A7DE003BD83C /* LYJSONType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYJSONType.h; sourceTree = "<group>"; };
+		526C2F9D2299A7DE003BD83C /* LYJSONType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYJSONType.m; sourceTree = "<group>"; };
 		9E82D0CA215CDD1300D7BECD /* LYJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LYJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E82D0CE215CDD1300D7BECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E82D0D3215CDD1300D7BECD /* LYJSONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LYJSONTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E82D0D8215CDD1300D7BECD /* LYJSONTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYJSONTests.m; sourceTree = "<group>"; };
 		9E82D0DA215CDD1300D7BECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E82D0F8215CDF2400D7BECD /* LYJSONError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYJSONError.m; sourceTree = "<group>"; };
-		9E82D0F9215CDF2400D7BECD /* LYJSONError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYJSONError.h; sourceTree = "<group>"; };
 		9E82D0FA215CDF2500D7BECD /* LYJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYJSON.m; sourceTree = "<group>"; };
 		9E82D0FB215CDF2500D7BECD /* LYJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYJSON.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,10 +85,12 @@
 			isa = PBXGroup;
 			children = (
 				9E82D0CE215CDD1300D7BECD /* Info.plist */,
+				526C2F9C2299A7DE003BD83C /* LYJSONType.h */,
+				526C2F9D2299A7DE003BD83C /* LYJSONType.m */,
 				9E82D0FB215CDF2500D7BECD /* LYJSON.h */,
 				9E82D0FA215CDF2500D7BECD /* LYJSON.m */,
-				9E82D0F9215CDF2400D7BECD /* LYJSONError.h */,
-				9E82D0F8215CDF2400D7BECD /* LYJSONError.m */,
+				526C2F972299949C003BD83C /* LYStaticJSON.h */,
+				526C2F982299949C003BD83C /* LYStaticJSON.m */,
 			);
 			path = LYJSON;
 			sourceTree = "<group>";
@@ -103,8 +111,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E82D0FD215CDF2500D7BECD /* LYJSONError.h in Headers */,
+				526C2F9E2299A7DE003BD83C /* LYJSONType.h in Headers */,
 				9E82D0FF215CDF2500D7BECD /* LYJSON.h in Headers */,
+				526C2F992299949C003BD83C /* LYStaticJSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +179,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 9E82D0C0215CDD1200D7BECD;
 			productRefGroup = 9E82D0CB215CDD1300D7BECD /* Products */;
@@ -204,8 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				526C2F9A2299949C003BD83C /* LYStaticJSON.m in Sources */,
+				526C2F9F2299A7DE003BD83C /* LYJSONType.m in Sources */,
 				9E82D0FE215CDF2500D7BECD /* LYJSON.m in Sources */,
-				9E82D0FC215CDF2500D7BECD /* LYJSONError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,8 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				526C2FA02299A7E4003BD83C /* LYJSONType.m in Sources */,
 				9E82D100215CDF7400D7BECD /* LYJSON.m in Sources */,
 				9E82D0D9215CDD1300D7BECD /* LYJSONTests.m in Sources */,
+				526C2F9B2299949C003BD83C /* LYStaticJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

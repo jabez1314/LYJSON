@@ -1,13 +1,13 @@
 //
 //  LYJSON.m
-//  JSON
+//  UdoTestProgress
 //
-//  Created by Jabez on 2018/9/27.
-//  Copyright © 2018 ly. All rights reserved.
+//  Created by Jabez on 06/02/2018.
+//  Copyright © 2018 Udo. All rights reserved.
 //
 
 #import "LYJSON.h"
-#import "LYJSONError.h"
+
 
 id unwrapped(id _Nullable object) {
     if ([object isKindOfClass:[LYJSON class]]) {
@@ -91,7 +91,7 @@ NS_INLINE LYJSON *internalJSON(id _Nullable object) {
 
 - (void)setObject:(id)object {
     _object = object;
-
+    
     if (nil == object || [object isEqual:[NSNull null]]) {
         _type = LYJSONTypeNull;
     } else if ([object isKindOfClass:[NSArray class]]) {
@@ -131,7 +131,7 @@ NS_INLINE LYJSON *internalJSON(id _Nullable object) {
     if (nil == jsonString) {
         return [self jsonWithObject:[NSNull null]];
     }
-
+    
     NSData * data = [[jsonString description] dataUsingEncoding:NSUTF8StringEncoding];
     if (nil != data) {
         return [self jsonWithData:data];
@@ -158,12 +158,12 @@ NS_INLINE LYJSON *internalJSON(id _Nullable object) {
         result.error = LYJSONError.wrongType;
         return result;
     }
-
+    
     NSMutableArray *array = (NSMutableArray *) self.arrayObject;
     if (idx >= 0 && idx < [array count]) {
         return internalJSON(array[idx]);
     }
-
+    
     LYJSON *result = [LYJSON null];
     result.error = LYJSONError.indexOutOfBounds;
     return result;
@@ -171,15 +171,15 @@ NS_INLINE LYJSON *internalJSON(id _Nullable object) {
 
 - (void)setObject:(id _Nullable)obj atIndexedSubscript:(NSInteger)idx {
     if (LYJSONTypeArray != _type) { return; }
-
+    
     if (nil != _error) { return; }
-
+    
     NSMutableArray *array = (NSMutableArray *) _object;
     if (![array isKindOfClass:[NSMutableArray class]]) {
         array = [NSMutableArray arrayWithArray:(NSArray *) _object];
         self.arrayObject = array;
     }
-
+    
     if (idx >= 0 && idx < array.count) {
         id unwrappedValue = unwrapped(obj);
         if (nil == unwrappedValue) {
@@ -193,39 +193,39 @@ NS_INLINE LYJSON *internalJSON(id _Nullable object) {
 #pragma mark - for Dictionary
 - (LYJSON *)objectForKeyedSubscript:(NSString *)key {
     LYJSON *result = LYJSON.null;
-
+    
     NSString *inputKey = [key description];
     if (LYJSONTypeDictionary != _type) {
         result.error = LYJSONError.wrongType;
     } else if (nil != inputKey) {
-
+        
         NSMutableDictionary *mutableDictionary = (NSMutableDictionary *) self.dictionaryObject;
         id value = mutableDictionary[inputKey];
         if (nil != value) {
             return internalJSON(value);
         }
     }
-
+    
     if (nil == result.error) {
         result.error = LYJSONError.notExist;
     }
-
+    
     return result;
 }
 
 - (void)setObject:(id _Nullable)obj forKeyedSubscript:(NSString *)key {
     if (nil != _error) { return; }
-
+    
     if (LYJSONTypeDictionary != _type) { return; }
-
+    
     if (nil == key) { return; }
-
+    
     NSMutableDictionary *dict = (NSMutableDictionary *) _object;
     if (![dict isKindOfClass:[NSMutableDictionary class]]) {
         dict = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *) _object];
         self.dictionaryObject = dict;
     }
-
+    
     if (nil == obj) {
         [dict removeObjectForKey:key.description];
     } else {
@@ -267,18 +267,26 @@ NS_INLINE LYJSON *internalJSON(id _Nullable object) {
 
 - (nullable NSData *)rawDataWithOptions:(NSJSONWritingOptions)options error:(NSError * _Nullable __autoreleasing *)error {
     if (nil == _object) { return nil; }
-
+    
     if (![NSJSONSerialization isValidJSONObject:_object]) {
         if (nil != error) { *error = [LYJSONError invalidJSON]; }
         return nil;
     }
-
+    
     NSError *inputError = nil;
     id object = [NSJSONSerialization dataWithJSONObject:_object options:options error:&inputError];
     if (error != nil && inputError != nil) {
         *error = [LYJSONError invalidJSON];
     }
     return object;
+}
+
+- (NSString *)stringValueWhereEmpty:(NSString *)defaultValue {
+    NSString *result = [self stringValue];
+    if (result.length == 0) {
+        return defaultValue;
+    }
+    return result;
 }
 
 #pragma mark - Array
@@ -489,10 +497,10 @@ NS_INLINE LYJSON *internalJSON(id _Nullable object) {
 #pragma mark - url
 - (NSURL *_Nullable)url {
     if (LYJSONTypeString != _type) { return nil; }
-
+    
     NSString *rawString = [self rawString];
     if (nil == rawString) { return nil; }
-
+    
     if ([rawString rangeOfString:@"%[0-9A-Fa-f]{2}" options:NSRegularExpressionSearch].location != NSNotFound) {
         return [NSURL URLWithString:rawString];
     } else {
@@ -533,4 +541,5 @@ NS_INLINE LYJSON *internalJSON(id _Nullable object) {
 }
 
 @end
+
 

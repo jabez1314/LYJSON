@@ -1,26 +1,19 @@
 //
 //  LYJSON.h
-//  JSON
+//  UdoTestProgress
 //
-//  Created by Jabez on 2018/9/27.
-//  Copyright © 2018 ly. All rights reserved.
+//  Created by Jabez on 06/02/2018.
+//  Copyright © 2018 Udo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "LYJSONType.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, LYJSONType) {
-    LYJSONTypeNumber,
-    LYJSONTypeString,
-    LYJSONTypeArray,
-    LYJSONTypeDictionary,
-    LYJSONTypeNull,
-    LYJSONTypeUnknown
-};
-
 /**
  * LYJSON: 安全的处理json，字典、数组等类型
+ mutable json object
  */
 @interface LYJSON : NSObject
 
@@ -84,6 +77,8 @@ typedef NS_ENUM(NSInteger, LYJSONType) {
 - (nullable NSString *)rawStringWithOptions:(NSJSONWritingOptions)options;
 - (nullable NSData *)rawDataWithOptions:(NSJSONWritingOptions)options error:(NSError **)error;
 
+- (NSString *)stringValueWhereEmpty:(NSString *)defaultValue NS_SWIFT_NAME(stringValue(whereEmpty:));
+
 #pragma mark - Data;
 - (nullable NSData *)rawData;
 - (nullable NSData *)rawDataWithOptions:(NSJSONWritingOptions)options;
@@ -102,4 +97,4 @@ FOUNDATION_STATIC_INLINE LYJSON *LYJSONObject(id _Nullable obj) {
     return [LYJSON jsonWithObject:obj];
 }
 
-NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END;

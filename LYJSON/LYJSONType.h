@@ -1,16 +1,28 @@
 //
-//  LYJSONError.h
-//  JSON
+//  LYJSONType.h
+//  LYJSON
 //
-//  Created by Jabez on 2018/9/27.
-//  Copyright © 2018 ly. All rights reserved.
+//  Created by john on 2019/5/26.
+//  Copyright © 2019 jabez. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LYJSONError : NSObject
+typedef NS_ENUM(NSInteger, LYJSONType) {
+    LYJSONTypeNumber,
+    LYJSONTypeString,
+    LYJSONTypeArray,
+    LYJSONTypeDictionary,
+    LYJSONTypeNull,
+    LYJSONTypeUnknown,
+    
+    LYJSONTypeJSON,
+    LYJSONTypeStaticJSON,
+};
+
+@interface LYJSONError: NSObject
 
 @property (class, nonatomic, readonly) NSError *unsupportedType;
 @property (class, nonatomic, readonly) NSError *indexOutOfBounds;
